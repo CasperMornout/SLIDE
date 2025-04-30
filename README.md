@@ -8,7 +8,7 @@ Sliding identification by Local Integration of Displacements across Edges (**SLI
 
 The **SLIDE** function library is written in [**MATLAB**](https://mathworks.com/products/matlab.html) and uses several functionalities of the MATLAB-based crystallographic toolbox [**MTEX**](https://mtex-toolbox.github.io). 
 
-**WARNING: It is recommended to use Mtex 5.11.8.**
+**WARNING: It is recommended to use Mtex 5.11.2.**
 
 It is important to use aligned EBSD/DIC data. See the following repository for an alignment framework: [**NanoMech_Alignment_Matlab**](https://github.com/Tijmenvermeij/NanoMech_Alignment_Matlab).
 
