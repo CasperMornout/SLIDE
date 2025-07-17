@@ -26,7 +26,17 @@ setMTEXpref('zAxisDirection','intoplane');
 addpath(genpath(pwd))
 
 % load struct with all aligned datasets
-load('Data/ZnCoating_Data.mat');
+% The file has been split up to cope with Github file size limitations
+File1 = load('Data/ZnCoating_Data_1.mat');
+File2 = load('Data/ZnCoating_Data_2.mat');
+
+ZnCoating_DataStruct = struct;
+ZnCoating_DataStruct.ebsd = File1.ZnCoating_DataStruct.ebsd;
+ZnCoating_DataStruct.grains = File1.ZnCoating_DataStruct.grains;
+ZnCoating_DataStruct.CONFOCAL = File2.ZnCoating_DataStruct.CONFOCAL;
+ZnCoating_DataStruct.IBSE = File2.ZnCoating_DataStruct.IBSE;
+
+clear File1 File2
 
 %% User Settings
 
