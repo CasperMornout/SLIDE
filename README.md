@@ -19,4 +19,4 @@ Please report any bugs you encounter.
 
 # How to cite SLIDE
 If you have applied the SLIDE code to your research, please cite this open-access paper as your reference:
-C.J.A. Mornout, G. Slokker, T. Vermeij et al., SLIDE: SLIDE: Automated identification and quantification of grain boundary sliding and opening in 3D, Scripta Materialia, https://doi.org/10.1016/j.scriptamat.2025.116861
+C.J.A. Mornout, G. Slokker, T. Vermeij et al., SLIDE: Automated identification and quantification of grain boundary sliding and opening in 3D, Scripta Materialia, https://doi.org/10.1016/j.scriptamat.2025.116861
