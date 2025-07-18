@@ -14,12 +14,9 @@ slidingMagnitude3d = grains.prop.slidingMagnitude3D_Total*1000;
 dZTotal_Absolute = abs(grains.prop.dZ_Total*1000);
 beta_Absolute = abs(grains.prop.beta_s_Total);
 
-%% Define a (filtered) ebsd strain field to plot
+%% Define an ebsd strain field to plot
 
-% In the SLIDE code (SLIDE_Solve_Minimization), the displacements are
-% filtered and therefore the strain field is also slightly filtered.
-% Therefore, we take a filtered strain field here to plot.
-E_eff_Filtered = ebsd.prop.(['inc_' num2str(inc_chosen) '_Eequi_Filter']);
+E_eff_Filtered = ebsd.prop.(['inc_' num2str(inc_chosen) '_Eequi']);
 
 %% Plot Settings and Preparation
 

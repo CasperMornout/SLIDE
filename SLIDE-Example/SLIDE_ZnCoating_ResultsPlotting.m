@@ -27,12 +27,15 @@ addpath(genpath(pwd))
 
 % load struct with all aligned datasets
 load('Data/ZnCoating_Data_Results.mat');
+load('Data/ZnCoating_Data_1.mat');
 
 %% Unpack stuff
 
 userSettings = SLIDE_Results.userSettings;
-ebsd_SLIDE = SLIDE_Results.ebsd_SLIDE;
+ebsd_SLIDE = ZnCoating_DataStruct.ebsd;
 grains_SLIDE = SLIDE_Results.grains_SLIDE;
+
+clear ZnCoating_DataStruct
 
 %% 1 - Overview Plot for SLIDE (3D)
 
@@ -60,7 +63,7 @@ clear input
 % example plot for a when 3D (profilometry) data is unavailable
 % works for any strain increment
 
-userSettings.currentInc = 1;
+userSettings.currentInc = 5;
 
 input = struct;
 input.grains = grains_SLIDE.(['inc_' num2str(userSettings.currentInc)]);
@@ -103,4 +106,3 @@ SLIDE_plotGBS_GBO_2D(input)
 export_fig('Figures/Results/Evolution_GBS_GBO_2D', '-m2', '-p0.01', '-png')
 
 clear input
-

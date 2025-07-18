@@ -15,10 +15,8 @@ IncrementStruct = struct;
 
 for i = incList
 
-    % In the SLIDE code (SLIDE_Solve_Minimization), the displacements are
-    % filtered and therefore the strain field is also slightly filtered.
-    % Therefore, we take a filtered strain field here to plot.
-    IncrementStruct.(['inc_' num2str(i)]).E_eff = ebsd.prop.(['inc_' num2str(i) '_Eequi_Filter']);
+    % Extract a strain field
+    IncrementStruct.(['inc_' num2str(i)]).E_eff = ebsd.prop.(['inc_' num2str(i) '_Eequi']);
 
     % extract the 2D sliding magnitude
     IncrementStruct.(['inc_' num2str(i)]).slidingMagnitude2D = grains_SLIDE.(['inc_' num2str(i)]).prop.slidingMagnitude2D_Total*1000;

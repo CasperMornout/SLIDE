@@ -1,13 +1,9 @@
 function ebsdOUT = SLIDE_Solve_Minimization(ebsdIN)
 
 %%%% Performs SLIDE %%%%
-
-% apply filtering on displacement field for smoother GB strain fields 
-options.option = 1;
-options.filter = 1;
-options.cutofffraction = 1;
-options.filt_std = 1;
-data = filterDisplacements(ebsdIN.prop.U.x,ebsdIN.prop.U.y,options);
+% collect U and V and check for NaN values
+data.U = ebsdIN.prop.U.x;
+data.V = ebsdIN.prop.U.y;
 nanU = isnan(ebsdIN.prop.U.x);
 data.U(nanU) = NaN;
 data.V(nanU) = NaN;

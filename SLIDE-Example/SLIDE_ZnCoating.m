@@ -43,9 +43,7 @@ clear File1 File2
 userSettings = struct;
 
 %%%% Settings about grain boundary smoothing %%%%%
-userSettings.smoothfactor = 400; % the number of times the grains will be smoothed
-% Note that in the original publication, a smooth factor of 50 was
-% employed. The smooth factor can be tweaked for each dataset
+userSettings.smoothfactor = 50; % the number of times the grains will be smoothed
 
 %%%% Settings about Integration Path Length (IPL) %%%%
 userSettings.IPL_min = 900; % distance of IPL_min parameter in nanometer
@@ -86,7 +84,8 @@ if userSettings.plottingIntermediateResults
     plot(ebsd,ebsd.prop.inc_5_Eequi)
     hold on
     plot(grains.boundary,'lineColor','red')
-    clim([0 1])
+    clim([0.02 1])
+    set(gca,'colorscale','log')
     colormap viridis
     mtexColorbar
     mtexTitle('Effective Strain + GB')
@@ -184,7 +183,7 @@ for strainInc = userSettings.inc_chosen
     
     % Read the X/Y maps for IBSE Forward-Deformed Alignment
     % These fields show, for each pixel in the undeformed EBSD dataset, the corresponding X and Y
-    % location in the IBSE dataset, taking into account forward deformation and alignment
+    % location in the IBSE dataset, taking into account forward deformed alignment
     IBSE_input.xIBSE = ZnCoating_DataStruct.IBSE.(['inc_' num2str(userSettings.currentInc)]).xIBSE;
     IBSE_input.yIBSE = ZnCoating_DataStruct.IBSE.(['inc_' num2str(userSettings.currentInc)]).yIBSE;
 
@@ -236,7 +235,7 @@ SLIDE_Struct.(['inc_' num2str(userSettings.currentInc)]) = SLIDE_Profilometry(CO
 clear CONF_input
 
 %% PART 5 - Post Processing Data
-% Combine all the grain-based data for the individual grains into one \
+% Combine all the grain-based data for the individual grains into one
 % grains2d variable
 
 grains_SLIDE = struct;
@@ -267,15 +266,7 @@ end
 % Generate a struct to save only the necessary data
 SLIDE_Results = struct;
 
-% Save an EBSD dataset, which includes the filtered strain data that was
-% used to calculate the sliding vectors
-ebsd_SLIDE = ebsd;
-for strainInc = userSettings.inc_chosen
-    ebsd_SLIDE.prop.(['inc_' num2str(strainInc) '_Eequi_Filter']) = SLIDE_Struct.(['inc_' num2str(strainInc)]).grainentry1.ebsdID.prop.Eeff;
-end
-
 % append the SLIDE results and smooth GBs to the struct
-SLIDE_Results.ebsd_SLIDE = ebsd_SLIDE;
 SLIDE_Results.grains_SLIDE = grains_SLIDE;
 SLIDE_Results.grains = grains_smooth;
 
